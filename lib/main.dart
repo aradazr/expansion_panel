@@ -49,10 +49,15 @@ class MyHomePage extends StatefulWidget {
 
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //! cuz we have 4 exPanel so we use 4 false
   final List<bool> _isOpen = [false, false, false, false];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //? Simple AppBar
       appBar: AppBar(backgroundColor: Colors.blue,
       title: Text('ExpansionPanel',
       style: GoogleFonts.inter(fontWeight:FontWeight.w500,color:Colors.white,),
@@ -62,9 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: const Color.fromARGB(255, 35, 34, 40),
       body: SafeArea(
         child: Center(
+
+          //!for expansion panel to scroll
           child: SingleChildScrollView(
             child: Column(
-              
+              //? List for Expansion Panel
               
               children: [
                 ExpansionPanelList(
@@ -76,14 +83,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   materialGapSize: 10,
                   expansionCallback: (i, isExpanded) {
                     setState(() {
-                      _isOpen[i] = (isExpanded);
+                      _isOpen[i] = isExpanded;
                     });
                   },
                   children: [
+                    //*Expansion Panel 1
                     ExpansionPanel(
                         backgroundColor: const Color.fromARGB(255, 35, 34, 40),
                         isExpanded: _isOpen[0],
-                        headerBuilder: (context, isExpanded) => ListTile(
+                        headerBuilder: (context, isExpanded) => 
+                        ListTile(
                               title: Text(
                                 'About Us',
                                 style: GoogleFonts.playfairDisplay(
@@ -100,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         )),
 
                     //!-------------------------------------------------------------------------------------------
+                   //*Expansion Panel 2
                     ExpansionPanel(
                         backgroundColor: const Color.fromARGB(255, 35, 34, 40),
                         isExpanded: _isOpen[1],
@@ -122,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     
                     
                     //!-------------------------------------------------------------------------------------------
+                   //*Expansion Panel 3
                     ExpansionPanel(
                         backgroundColor: const Color.fromARGB(255, 35, 34, 40),
                         isExpanded: _isOpen[2],
@@ -142,7 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         )),
                     
                     //!-------------------------------------------------------------------------------------------
-                    ExpansionPanel(
+                   //*Expansion Panel 4
+                   ExpansionPanel(
                         backgroundColor: const Color.fromARGB(255, 35, 34, 40),
                         isExpanded: _isOpen[3],
                         headerBuilder: (context, isExpanded) => ListTile(
